@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">{{ type }}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span>&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    {% if tire and tire.picture %}
+        <div class="row justify-content-center">
+            <img src="{{ tire.picture.url }}" alt="thumbnail">
+        </div>
+        <br>
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="number" name="pk" style="display: none" value="{{ tire.pk }}">
+    <div class="form-group row required">
+        <label for="example-text-input" class="col-2 col-form-label control-label">Name</label>
+        <div class="col-10">
+            <input name="name" class="form-control" value="{% if tire %}{{ tire.name }}{% endif %}" id="example-text-input">
+        </div>
+    </div>
+    <div class="form-group row required">
+        <label for="example-number-input" class="col-2 col-form-label control-label">Width (mm)</label>
+        <div class="col-10">
+            <input name="width" class="form-control" type="number" value="{% if tire %}{{ tire.width }}{% endif %}" id="example-number-input">
+        </div>
+    </div>
+    <div class="form-group row required">
+        <label for="example-number-input" class="col-2 col-form-label control-label">Height (mm)</label>
+        <div class="col-10">
+            <input name="height" class="form-control" type="number" value="{% if tire %}{{ tire.height }}{% endif %}" id="example-number-input">
+        </div>
+    </div>
+    <div class="form-group row required">
+        <label for="example-number-input" class="col-2 col-form-label control-label">Diameter (mm)</label>
+        <div class="col-10">
+            <input name="diameter" class="form-control" type="number" value="{% if tire %}{{ tire.diameter }}{% endif %}" id="example-number-input">
+        </div>
+    </div>
+    <div class="form-group row required">
+        <label for="example-text-input" class="col-2 col-form-label control-label">Speed index</label>
+        <div class="col-10">
+            <input name="speed_index" class="form-control" value="{% if tire %}{{ tire.speed_index }}{% endif %}" id="example-text-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Picture</label>
+        <div class="col-10">
+            <input name="picture" type="file" accept="image/*">
+        </div>
+    </div>
+    </form>
+</div>
+<div class="modal-footer">
+    {% if tire %}
+        <button type="button" class="btn btn-success" onclick="add_or_edit()">{{ type }}</button>
+    {% else %}
+        <button type="button" class="btn btn-success" onclick="add_or_edit()">{{ type }}</button>
+    {% endif %}
+    {% if tire %}<button type="button" class="btn btn-danger" onclick="deleteTire({{ tire.pk }})">Delete</button>{% endif %}
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

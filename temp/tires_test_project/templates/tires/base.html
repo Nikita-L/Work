@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'tires/images/tire_icon.ico' %}">
+    <title>Tires</title>
+    <link href="{% static 'tires/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'tires/css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+<script src="{% static 'tires/js/angular.min.js' %}"></script>
+<div class="bg-inverse collapse" id="navbarHeader" aria-expanded="false" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-muted">{% lorem %}</p>
+            </div>
+            <div class="col-sm-4 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                    <li><a href="#" class="text-white">Like on Facebook</a></li>
+                    <li><a href="#" class="text-white">Email me</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-inverse bg-inverse">
+    <div class="container d-flex justify-content-between">
+        <a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="navbar-brand">Tires</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<br>
+
+<div class="container" id="ctrl" ng-app="tiresApp" ng-controller="tireListCtrl">
+    {% block main %}{% endblock %}
+</div>
+
+<footer class="text-muted">
+    <div class="container">
+        <p>© {% lorem %}</p>
+    </div>
+</footer>
+
+<script src="{% static 'tires/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'tires/js/main.js' %}"></script>
+<script src="{% static 'tires/js/app.js' %}"></script>
+<script src="{% static 'tires/js/popper.min.js' %}"></script>
+<script src="{% static 'tires/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'tires/js/ie10-viewport-bug-workaround.js' %}"></script>
+</body>
+</html>
